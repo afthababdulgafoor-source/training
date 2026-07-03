@@ -1,4 +1,4 @@
-from detection import detector
+from Detection import Detector
 import json
 print("1. Add a Vehicle Detection \n " \
        "2. View All Detections \n " \
@@ -13,53 +13,83 @@ var=int(input("choice variable"))
 
 match var:
     case 1:
-        vehicle_no=str(input("vehicle number:"))
-        slot_no=int(input("slot no:"))
-        date=str(input("time"))
-        confidence_score=int(input("score:"))
-        detector.one(vehicle_no,slot_no,date,confidence_score)
+        try:
+            vehicle_no=str(input("vehicle number:"))
+            if Detector.vehicle_check(vehicle_no)==[]:
+                if Detector.numbervalidation(vehicle_no)==True:
+                    slot_no=int(input("slot no:"))
+                    date=str(input("time"))
+                    confidence_score=int(input("score:"))
+                    if Detector.crosscheck(vehicle_no,date)==[]:
+                        Detector.insertvalues(vehicle_no,slot_no,date,confidence_score)
+                    else:
+                        print("value exists")
+                else:
+                    print("invalid vehicle number")
+            else:
+                print("vehicle number exists")
+        except Exception as e:
+            print("invalid_input",e)
     case 2:
-        r=detector.two()
+        r=Detector.listallvehicle()
         results=[]
         for vehicle_no,slot_no,dateandtime,confidence_score in r:
-            result={"vehicle_no":vehicle_no,"slotno":slot_no,"dateandtime":dateandtime.strftime('%d-%m-%Y %H:%M:%S'),
-                    "confidence_score":confidence_score}
+            result=Detector.display_output(vehicle_no,slot_no,dateandtime,confidence_score)
             results.append(result)
             result=json.dumps(result)
             print(result)
         with open("myfile.json","a") as f:
             json.dump(results,f,indent=5)
     case 3:
-        vehicle_no=str(input("vehicle number"))
-        for vehicle_no,slot_no,dateandtime,confidence_score in detector.three(vehicle_no):
-            result={"vehicle_no":vehicle_no,"slotno":slot_no,"dateandtime":dateandtime.strftime('%d-%m-%Y %H:%M:%S'),
-                    "confidence_score":confidence_score}
+        try:
+            vehicle_no=str(input("vehicle number"))
+            if Detector.numbervalidation(vehicle_no)==True:
+                pass
+            else:
+                print("invalid vehicle number")
+        except Exception as e:
+            print("invalid input")
+        for vehicle_no,slot_no,dateandtime,confidence_score in Detector.listbyvehicleno(vehicle_no):
+            result=Detector.display_output(vehicle_no,slot_no,dateandtime,confidence_score)
             result=json.dumps(result)
             print(result)
     case 4:
-        vehicle_no=str(input("vehicle number"))
-        confidence_score=int(input("score:"))
-        detector.four(confidence_score,vehicle_no,)
+        try:
+            vehicle_no=str(input("vehicle number"))
+            confidence_score=int(input("score:"))
+            if Detector.numbervalidation(vehicle_no)==True and Detector.scorecheck(confidence_score)==True:
+                pass
+            else:
+                print("invalid vehicle number")
+        except Exception as e:
+            print("invalid input")
+        Detector.updatescore(confidence_score,vehicle_no,)
         print("value updated")
     case 5:
-        vehicle_no=str(input("vehicle number"))
-        detector.five(vehicle_no)
+        try:
+            vehicle_no=str(input("vehicle number"))
+            if Detector.numbervalidation(vehicle_no)==True:
+                pass
+            else:
+                print("invalid vehicle number")
+        except Exception as e:
+            print("invalid input")
+        Detector.deletebyvehicleno(vehicle_no)
         print("RECORD DELETED")
         
     case 6:
-        print("total detections:",detector.six()[0][0])
+        print("total detections:",Detector.totaldetections()[0][0])
     case 7:
-        r=detector.seven()
+        r=Detector.listvehicleonscore()
         results=[]
         for vehicle_no,slot_no,dateandtime,confidence_score in r:
-            result={"vehicle_no":vehicle_no,"slotno":slot_no,"dateandtime":dateandtime.strftime('%d-%m-%Y %H:%M:%S'),
-            "confidence_score":confidence_score}
+            result=Detector.display_output(vehicle_no,slot_no,dateandtime,confidence_score)
             #print(result)
             results.append(result)
         for i in results:
             print(i)
     case 8:
-        detector.eight()
+        Detector.deleteonvehiclecount()
         print("deleted successfully")
 # with open('myfile.json', 'r') as file:
 #     data = json.load(file)
