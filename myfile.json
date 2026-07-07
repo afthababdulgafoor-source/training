@@ -1,0 +1,74 @@
+[
+     {
+          "vehicle_no": "KL07AB1234",
+          "slotno": 1,
+          "dateandtime": "29-06-2026 08:15:22",
+          "confidence_score": 96
+     },
+     {
+          "vehicle_no": "KL11CD5678",
+          "slotno": 2,
+          "dateandtime": "29-06-2026 08:21:10",
+          "confidence_score": 91
+     },
+     {
+          "vehicle_no": "KL08JK2468",
+          "slotno": 5,
+          "dateandtime": "29-06-2026 09:05:33",
+          "confidence_score": 97
+     },
+     {
+          "vehicle_no": "KL10NP9087",
+          "slotno": 1,
+          "dateandtime": "29-06-2026 09:26:58",
+          "confidence_score": 93
+     },
+     {
+          "vehicle_no": "KL55ST1122",
+          "slotno": 3,
+          "dateandtime": "29-06-2026 09:52:29",
+          "confidence_score": 95
+     },
+     {
+          "vehicle_no": "KL02AA4587",
+          "slotno": 3,
+          "dateandtime": "22-06-2026 07:45:18",
+          "confidence_score": 94
+     },
+     {
+          "vehicle_no": "KL17KL6508",
+          "slotno": 1,
+          "dateandtime": "27-06-2026 08:33:27",
+          "confidence_score": 93
+     },
+     {
+          "vehicle_no": "KL30PQ4823",
+          "slotno": 2,
+          "dateandtime": "01-07-2026 13:20:35",
+          "confidence_score": 96
+     },
+     {
+          "vehicle_no": "KL38RS9054",
+          "slotno": 4,
+          "dateandtime": "03-07-2026 17:48:11",
+          "confidence_score": 91
+     },
+     {
+          "vehicle_no": "KL65TU7410",
+          "slotno": 3,
+          "dateandtime": "05-07-2026 20:16:44",
+          "confidence_score": 92
+     },
+     {
+          "vehicle_no": "'KL07AG8312",
+          "slotno": 2,
+          "dateandtime": "03-07-2026 17:48:11",
+          "confidence_score": 91
+     },
+     {
+          "vehicle_no": "KL07AB98765",
+          "slotno": 2,
+          "dateandtime": "29-06-2026 08:18:22",
+          "confidence_score": 91
+     }
+]
